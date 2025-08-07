@@ -191,7 +191,7 @@ jobs:
       ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
       AAD_CLIENT_SECRET: ${{ secrets.AAD_CLIENT_SECRET }}
 
-    steps:
+    steps: 
       - name: Checkout code
         uses: actions/checkout@v4
 
