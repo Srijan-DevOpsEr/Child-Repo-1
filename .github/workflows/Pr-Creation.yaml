@@ -7,7 +7,7 @@ permissions:
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main] # Adjust the branch as needed
   workflow_dispatch:
 
 jobs:
