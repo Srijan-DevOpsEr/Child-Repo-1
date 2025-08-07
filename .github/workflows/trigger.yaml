@@ -16,8 +16,9 @@ jobs:
       - name: Trigger Central Pipeline
         uses: peter-evans/repository-dispatch@v3
         with:
-          token: ${{ secrets.GH_TOKEN }}  # GitHub Personal Access Token
-          repository: Srijan-DevOpsEr/central-Repo  # The central repository where the orchestration pipeline lives
+
+          token: ${{ secrets.GH_TOKEN}}  # Personal Access Token for authentication
+          repository: Srijan-DevOpsEr/Central-Repo  # The central repository where the orchestration pipeline live
           event-type: pr_event  # Custom event type to trigger the central pipeline
           client-payload: |
             {
