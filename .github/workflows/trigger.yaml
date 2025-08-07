@@ -17,7 +17,7 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.GH_TOKEN }}  # Personal Access Token for authentication
-          repository: Srijan-DevOpsEr/central-repo  # The central repository where the orchestration pipeline lives
+          repository: Srijan-DevOpsEr/Central-Repo  # The central repository where the orchestration pipeline lives
           event-type: pr_event  # Custom event type to trigger the central pipeline
           client-payload: |
             {
