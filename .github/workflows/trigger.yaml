@@ -6,6 +6,8 @@ on:
       - opened        # Triggered when a PR is created (opened)
       - closed        # Triggered when a PR is merged (closed)
       - synchronize   # Triggered when a PR is updated (new commits)
+    branches:
+      - main
 
 jobs:
   trigger_central_pipeline:
@@ -14,15 +16,14 @@ jobs:
       - name: Trigger Central Pipeline on PR Creation or Merge
         uses: peter-evans/repository-dispatch@v3
         with:
-          token: ${{ secrets.GH_TOKEN}}  # Personal Access Token for authentication
-          repository: chain-builds/central-repo  # The central repository where the orchestration pipeline lives
+          token: ${{ secrets.GH_TOKEN }}  # Personal Access Token for authentication
+          repository: Srijan-DevOpsEr/central-repo  # The central repository where the orchestration pipeline lives
           event-type: pr_event  # Custom event type to trigger the central pipeline
           client-payload: |
             {
               "triggered_by": "${{ github.repository }}",
-              "pr_event": "${{ github.event.action }}",  # This can be 'opened', 'synchronize', or 'closed'
+              "pr_event": "${{ github.event.action }}",  # Can be 'opened', 'synchronize', or 'closed'
               "pr_number": "${{ github.event.pull_request.number }}",
               "commit_sha": "${{ github.sha }}",
               "branch": "${{ github.head_ref }}"
             }
-            echo "Triggered Central Pipeline with PR Event Details"
